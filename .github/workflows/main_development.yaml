@@ -26,8 +26,7 @@ jobs:
       - run: flutter build apk --flavor development --target lib/main_development.dart
 
       - name: Run Tests
-        uses: flutter_test and bloc_test
-      - run: flutter test --coverage --test-randomize-ordering-seed random
+        run: flutter test --coverage --test-randomize-ordering-seed random
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
