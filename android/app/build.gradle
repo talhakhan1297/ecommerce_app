@@ -92,7 +92,7 @@ android {
         release {
             applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "${rootProject.name}_${versionName}.apk"
+                    outputFileName = "${rootProject.name}_${variant.getFlavorName()}.apk"
                 }
             }
             signingConfig signingConfigs.release
