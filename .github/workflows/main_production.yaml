@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: ecommerce_app
-          path: android/app/build/outputs/apk/release/ecommerce_app_${{ github.event.inputs.version }}.apk
+          path: build/outputs/apk/release/ecommerce_app_${{ github.event.inputs.version }}.apk
 
   release:
     name: Release APK
