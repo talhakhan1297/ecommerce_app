@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - development
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Application Version"
-        required: true
-        default: "0.0.1"
 
 jobs:
   build:
@@ -54,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: ecommerce_app
-          path: build/outputs/apk/release/ecommerce_app_${{ github.event.inputs.version }}.apk
+          path: build/outputs/apk/release/ecommerce_app_development.apk
 
   release:
     name: Release APK
@@ -71,8 +65,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.event.inputs.version }}
-          name: Release v${{ github.event.inputs.version }}
+          name: Release Development
           draft: false
           prerelease: false
-          files: ecommerce_app/ecommerce_app_${{ github.event.inputs.version }}.apk
+          files: ecommerce_app/ecommerce_app_development.apk
