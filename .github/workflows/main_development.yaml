@@ -66,6 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: Release Development
+          tag_name: development
           draft: false
           prerelease: false
           files: ecommerce_app/ecommerce_app_development.apk
