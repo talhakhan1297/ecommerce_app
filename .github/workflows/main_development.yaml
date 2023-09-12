@@ -49,26 +49,3 @@ jobs:
         with:
           name: ecommerce_app
           path: build/app/outputs/flutter-apk/app-development-release.apk
-
-  release:
-    name: Release APK
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Download APK from build
-        uses: actions/download-artifact@v1
-        with:
-          name: ecommerce_app
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: Release Development
-          tag_name: development
-          draft: false
-          prerelease: false
-          files: /home/runner/work/ecommerce_app/ecommerce_app/ecommerce_app/app-development-release.apk
