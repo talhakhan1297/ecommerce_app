@@ -69,4 +69,4 @@ jobs:
           tag_name: development
           draft: false
           prerelease: false
-          files: ecommerce_app/ecommerce_app_development.apk
+          files: /home/runner/work/ecommerce_app/ecommerce_app/ecommerce_app/app-development-release.apk
