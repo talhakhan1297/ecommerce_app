@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Application Version"
+        required: true
+        default: "0.0.1"
 
 jobs:
   build:
