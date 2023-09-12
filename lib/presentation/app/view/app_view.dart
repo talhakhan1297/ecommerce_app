@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce_bloc_app/counter/counter.dart';
-import 'package:my_ecommerce_bloc_app/l10n/l10n.dart';
+import 'package:my_ecommerce_bloc_app/presentation/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,7 +15,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const SizedBox(),
     );
   }
 }
