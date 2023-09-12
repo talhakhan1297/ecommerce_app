@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.ecommerce_bloc.org.my-ecommerce-bloc-app" "\0"
+            VALUE "CompanyName", "com.ecommerceapp.org" "\0"
             VALUE "FileDescription", "my_ecommerce_bloc_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "my_ecommerce_bloc_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.ecommerce_bloc.org.my-ecommerce-bloc-app. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.ecommerceapp.org. All rights reserved." "\0"
             VALUE "OriginalFilename", "my_ecommerce_bloc_app.exe" "\0"
             VALUE "ProductName", "My Ecommerce Bloc App" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

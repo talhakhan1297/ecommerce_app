@@ -23,10 +23,11 @@ jobs:
         with:
           flutter-version: "3.10.6"
           channel: "stable"
-      - run: flutter build apk --flavor development --target lib/main_development.dart
 
       - name: Run Tests
         run: flutter test --coverage --test-randomize-ordering-seed random
+
+      - run: flutter build apk --flavor development --target lib/main_development.dart
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
