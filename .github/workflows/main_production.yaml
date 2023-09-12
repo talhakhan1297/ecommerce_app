@@ -1,0 +1,51 @@
+name: Flutter Production Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: "11"
+          distribution: "temurin"
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.10.6"
+          channel: "stable"
+
+      - name: Run Tests
+        run: flutter test --coverage --test-randomize-ordering-seed random
+
+      # Here we need to decode keystore.jks from base64 string and place it
+      # in the folder specified in the release signing configuration
+      - name: Decode Keystore
+        id: decode_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: "android_keystore.jks"
+          fileDir: "/home/runner/work/ecommerce_app/ecommerce_app/android/app/keystore/"
+          encodedString: ${{ secrets.KEYSTORE }}
+
+      # Build and sign APK ("-x test" argument is used to skip tests)
+      - name: Build APK
+        run: flutter build apk --flavor production --target lib/main_production.dart
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+
+      # Save the APK after the Build job is complete to publish it as a Github release in the next job
+      - name: Upload APK
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: ecommerce_app
+          path: build/app/outputs/flutter-apk/app-production-release.apk
