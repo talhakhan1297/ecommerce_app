@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Application Version"
-        required: true
-        default: "0.0.1"
 
 jobs:
   build:
@@ -54,12 +48,14 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: ecommerce_app
-          path: build/outputs/apk/release/ecommerce_app_${{ github.event.inputs.version }}.apk
+          path: build/app/outputs/flutter-apk/app-production-release.apk
 
   release:
     name: Release APK
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download APK from build
         uses: actions/download-artifact@v1
@@ -71,8 +67,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.event.inputs.version }}
-          name: Release v${{ github.event.inputs.version }}
+          name: Release Production
+          tag_name: production
           draft: false
           prerelease: false
-          files: ecommerce_app/ecommerce_app_${{ github.event.inputs.version }}.apk
+          files: /home/runner/work/ecommerce_app/ecommerce_app/ecommerce_app/app-production-release.apk

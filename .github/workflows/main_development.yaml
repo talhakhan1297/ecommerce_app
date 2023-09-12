@@ -54,6 +54,8 @@ jobs:
     name: Release APK
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download APK from build
         uses: actions/download-artifact@v1
