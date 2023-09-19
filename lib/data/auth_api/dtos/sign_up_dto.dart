@@ -11,6 +11,9 @@ class SignUpDto extends Equatable {
   final String email;
   final String password;
 
+  Map<String, dynamic> toJson() =>
+      {'name': name, 'email': email, 'password': password};
+
   @override
   List<Object?> get props => [name, email, password];
 }
