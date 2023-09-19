@@ -1,17 +1,19 @@
 part of 'api.dart';
 
 class AuthApiImpl extends AuthApi {
-  AuthApiImpl({required ApiClient client}) : _client = client;
+  AuthApiImpl({required APIClient client}) : _client = client;
 
-  final ApiClient _client;
+  final APIClient _client;
 
   @override
   Future<UserEntity> signIn(SignInDto dto) async {
-    return _client.post() as UserEntity;
+    final data = _client.post(handle: AuthEndpoints.signIn);
+    return UserEntity.fromJson(data as Map<String, dynamic>);
   }
 
   @override
   Future<UserEntity> signUp(SignUpDto dto) async {
-    return _client.post() as UserEntity;
+    final data = _client.post(handle: AuthEndpoints.signUp);
+    return UserEntity.fromJson(data as Map<String, dynamic>);
   }
 }

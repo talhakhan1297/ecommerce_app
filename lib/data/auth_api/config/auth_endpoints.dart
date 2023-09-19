@@ -1,6 +1,6 @@
 class AuthEndpoints {
-  AuthEndpoints._();
+  const AuthEndpoints._();
 
-  final signIn = '/signIn';
-  final signUp = '/signUp';
+  static const signIn = '/signIn';
+  static const signUp = '/signUp';
 }
