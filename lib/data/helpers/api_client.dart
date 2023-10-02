@@ -22,7 +22,9 @@ class APIClient {
   }) : _client = client ??
             InterceptedClient.build(
               interceptors: [
-                authInterceptor ?? const AuthInterceptor('token'),
+                // Pass AuthInterceptor through getIt and set token on login and
+                // signup.
+                authInterceptor ?? AuthInterceptor(),
                 errorInterceptor ?? ErrorInterceptor(),
                 logInterceptor ?? LogInterceptor(),
               ],
