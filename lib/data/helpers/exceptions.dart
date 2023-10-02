@@ -1,19 +1,4 @@
-class CustomException implements Exception {
-  const CustomException(
-    this._message,
-    this._prefix,
-  );
-
-  final String? _message;
-  final String _prefix;
-
-  String get message => _message ?? 'Something went wrong';
-
-  @override
-  String toString() {
-    return '$_prefix $_message';
-  }
-}
+import 'package:my_ecommerce_bloc_app/common/custom_exception.dart';
 
 class FetchDataException extends CustomException {
   const FetchDataException([
