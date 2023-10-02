@@ -15,6 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   formz: ^0.6.0
+  get_it: ^7.6.4
   hive: ^2.2.3
   http_interceptor: ^1.0.2
   intl: ^0.18.0
