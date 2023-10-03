@@ -36,8 +36,7 @@ class SignUpState extends Equatable {
   }
 
   String? nameError(AppLocalizations l10n) {
-    if (name.isPure) return null;
-    if (name.error == GeneralValidationError.empty) {
+    if (name.displayError == GeneralValidationError.empty) {
       return l10n.nameEmpty;
     }
     return null;

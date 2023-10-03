@@ -8,9 +8,9 @@ enum EmailValidationError {
   String message(AppLocalizations l10n) {
     switch (this) {
       case EmailValidationError.empty:
-        return l10n.passwordEmpty;
+        return l10n.emailEmpty;
       case EmailValidationError.invalid:
-        return l10n.passwordLessThan8;
+        return l10n.emailInvalid;
     }
   }
 }
