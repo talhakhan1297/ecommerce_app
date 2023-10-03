@@ -4,5 +4,5 @@ import 'package:my_ecommerce_bloc_app/presentation/app/app.dart';
 
 void main() {
   APIConfig.baseUrl = 'devUrl';
-  bootstrap(() => const App());
+  bootstrap((appBloc) => App(appBloc: appBloc));
 }

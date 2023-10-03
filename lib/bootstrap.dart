@@ -5,6 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_ecommerce_bloc_app/domain/auth_repository/repository.dart';
+import 'package:my_ecommerce_bloc_app/presentation/app/app.dart';
+import 'package:my_ecommerce_bloc_app/presentation/router/router.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -22,14 +24,20 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> bootstrap(FutureOr<Widget> Function(AppBloc) builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = const AppBlocObserver();
 
-  GetIt.I.registerSingleton(AuthRepositoryImpl());
+  final authRepository = AuthRepositoryImpl();
 
-  runApp(await builder());
+  final appBloc = AppBloc(authRepository: authRepository);
+
+  GetIt.I
+    ..registerSingleton(authRepository)
+    ..registerSingleton(AppRouter(appBloc: appBloc));
+
+  runApp(await builder(appBloc));
 }
