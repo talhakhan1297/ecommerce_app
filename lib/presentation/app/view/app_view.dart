@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:ecommerce_app/domain/auth_repository/repository.dart';
 import 'package:ecommerce_app/presentation/app/app.dart';
 import 'package:ecommerce_app/presentation/l10n/l10n.dart';
 import 'package:ecommerce_app/presentation/router/router.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class App extends StatelessWidget {
   App({super.key});

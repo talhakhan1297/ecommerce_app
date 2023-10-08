@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:formz/formz.dart';
 import 'package:ecommerce_app/common/custom_exception.dart';
 import 'package:ecommerce_app/domain/auth_repository/repository.dart';
 import 'package:ecommerce_app/presentation/l10n/l10n.dart';
 import 'package:ecommerce_app/presentation/utils/validators/validators.dart';
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';

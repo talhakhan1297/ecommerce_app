@@ -1,7 +1,7 @@
-import 'package:go_router/go_router.dart';
 import 'package:ecommerce_app/presentation/products/products.dart';
 import 'package:ecommerce_app/presentation/sign_in/sign_in.dart';
 import 'package:ecommerce_app/presentation/sign_up/sign_up.dart';
+import 'package:go_router/go_router.dart';
 
 class AppRoutes {
   AppRoutes._();

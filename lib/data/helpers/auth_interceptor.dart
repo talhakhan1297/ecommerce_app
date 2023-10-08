@@ -5,9 +5,11 @@ class AuthInterceptor implements InterceptorContract {
 
   @override
   Future<RequestData> interceptRequest({required RequestData data}) async {
-    if (token != null) {
-      data.headers.addAll({'Authorization': 'Bearer $token'});
-    }
+    data.headers.addAll({
+      if (token != null) 'Authorization': 'Bearer $token',
+      'content-type': 'application/json',
+    });
+
     return data;
   }
 

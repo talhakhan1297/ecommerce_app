@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:http_interceptor/http_interceptor.dart';
 import 'package:ecommerce_app/data/helpers/helpers.dart';
+import 'package:http_interceptor/http_interceptor.dart';
 
 class ExpiredTokenRetryPolicy implements RetryPolicy {
   @override

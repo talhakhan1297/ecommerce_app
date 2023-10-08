@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:ecommerce_app/common/cache_client.dart';
 import 'package:ecommerce_app/data/auth_api/api.dart';
 import 'package:ecommerce_app/domain/auth_repository/models/models.dart';
+import 'package:flutter/foundation.dart';
 
 export 'dtos/dtos.dart';
 export 'models/models.dart';
@@ -36,7 +37,7 @@ abstract class AuthRepository {
   Stream<UserModel> get user async* {
     yield currentUser;
     yield* _userAuth.stream.map((user) {
-      _cache.write(key: userCacheKey, value: user);
+      _cache.write<String>(key: userCacheKey, value: jsonEncode(user.toJson));
       return user;
     });
   }
@@ -44,7 +45,10 @@ abstract class AuthRepository {
   /// Returns the current cached user.
   /// Defaults to [UserModel.empty] if there is no cached user.
   UserModel get currentUser {
-    return _cache.read<UserModel>(key: userCacheKey) ?? UserModel.empty;
+    final userJson = _cache.read<String>(key: userCacheKey);
+    return userJson == null
+        ? UserModel.empty
+        : UserModel.fromJson(jsonDecode(userJson) as Map<String, dynamic>);
   }
 
   /// id of the current user

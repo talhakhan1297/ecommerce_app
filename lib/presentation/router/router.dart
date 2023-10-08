@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ecommerce_app/presentation/app/app.dart';
 import 'package:ecommerce_app/presentation/router/routes.dart';
 import 'package:ecommerce_app/presentation/sign_in/sign_in.dart';
 import 'package:ecommerce_app/presentation/sign_up/sign_up.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 export 'routes.dart';
 
@@ -21,7 +21,9 @@ class AppRouter {
         final signedIn = appState.isAuthenticated;
         final signingIn = state.matchedLocation == SignInView.route;
         final signingUp = state.matchedLocation == SignUpView.route;
+
         if (!signedIn && !signingIn && !signingUp) return SignInView.route;
+        if (signedIn && (signingIn || signingUp)) return AppRoutes.initial;
 
         return null;
       },

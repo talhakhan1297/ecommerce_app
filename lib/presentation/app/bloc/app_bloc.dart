@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:ecommerce_app/domain/auth_repository/repository.dart';
+import 'package:equatable/equatable.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

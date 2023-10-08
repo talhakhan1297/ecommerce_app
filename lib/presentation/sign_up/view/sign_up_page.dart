@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ecommerce_app/presentation/l10n/l10n.dart';
 import 'package:ecommerce_app/presentation/sign_in/sign_in.dart';
 import 'package:ecommerce_app/presentation/sign_up/bloc/sign_up_bloc.dart';
 import 'package:ecommerce_app/presentation/utils/helpers/snackbar.dart';
 import 'package:ecommerce_app/presentation/utils/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -20,7 +20,7 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TitleWidget(text: 'SignUp'),
+            const TitleWidget(text: 'Sign Up'),
             const SizedBox(height: 48),
             const NameTextField(),
             const SizedBox(height: 16),
