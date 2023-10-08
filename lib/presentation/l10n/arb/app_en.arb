@@ -1,0 +1,9 @@
+{
+    "@@locale": "en",
+    "passwordEmpty": "Please enter a password.",
+    "passwordMoreThan50": "Please keep your password under 50 characters.",
+    "passwordLessThan8": "Password must have at least 8 characters.",
+    "emailEmpty": "Please enter an email.",
+    "emailInvalid": "Please enter a valid email.",
+    "nameEmpty": "Please enter a name."
+}
