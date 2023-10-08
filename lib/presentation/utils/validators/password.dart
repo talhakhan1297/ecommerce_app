@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:my_ecommerce_bloc_app/presentation/l10n/l10n.dart';
+import 'package:ecommerce_app/presentation/l10n/l10n.dart';
 
 /// Validation errors for the [Password] [FormzInput].
 enum PasswordValidationError {

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:my_ecommerce_bloc_app/data/auth_api/entities/entities.dart';
+import 'package:ecommerce_app/data/auth_api/entities/entities.dart';
 
 class UserModel extends Equatable {
   const UserModel({this.id, this.name, this.email});

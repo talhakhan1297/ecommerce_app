@@ -1,4 +1,4 @@
-import 'package:my_ecommerce_bloc_app/common/custom_exception.dart';
+import 'package:ecommerce_app/common/custom_exception.dart';
 
 class FetchDataException extends CustomException {
   const FetchDataException([

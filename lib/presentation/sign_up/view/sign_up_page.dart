@@ -2,31 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:my_ecommerce_bloc_app/presentation/l10n/l10n.dart';
-import 'package:my_ecommerce_bloc_app/presentation/sign_up/bloc/sign_up_bloc.dart';
-import 'package:my_ecommerce_bloc_app/presentation/utils/helpers/snackbar.dart';
-import 'package:my_ecommerce_bloc_app/presentation/utils/widgets/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ecommerce_app/presentation/l10n/l10n.dart';
+import 'package:ecommerce_app/presentation/sign_in/sign_in.dart';
+import 'package:ecommerce_app/presentation/sign_up/bloc/sign_up_bloc.dart';
+import 'package:ecommerce_app/presentation/utils/helpers/snackbar.dart';
+import 'package:ecommerce_app/presentation/utils/widgets/widgets.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TitleWidget(text: 'SignUp'),
-            SizedBox(height: 48),
-            NameTextField(),
-            SizedBox(height: 16),
-            EmailTextField(),
-            SizedBox(height: 16),
-            PasswordTextField(),
-            SizedBox(height: 48),
-            SignUpButton(),
+            const TitleWidget(text: 'SignUp'),
+            const SizedBox(height: 48),
+            const NameTextField(),
+            const SizedBox(height: 16),
+            const EmailTextField(),
+            const SizedBox(height: 16),
+            const PasswordTextField(),
+            const SizedBox(height: 48),
+            const SignUpButton(),
+            const SizedBox(height: 16),
+            TextButton(
+              onPressed: () => context.go(SignInView.route),
+              child: const Text('Go to Sign In'),
+            ),
           ],
         ),
       ),
@@ -49,7 +56,7 @@ class NameTextField extends StatelessWidget {
           inputFormatters: [LengthLimitingTextInputFormatter(50)],
           errorMessage: state.nameError(context.l10n),
           onChanged: (value) =>
-              context.read<SignUpBloc>().add(NameChanged(name: value)),
+              context.read<SignUpBloc>().add(SignUpNameChanged(name: value)),
         );
       },
     );
@@ -71,7 +78,7 @@ class EmailTextField extends StatelessWidget {
           inputFormatters: [LengthLimitingTextInputFormatter(150)],
           errorMessage: state.email.displayError?.message(context.l10n),
           onChanged: (value) =>
-              context.read<SignUpBloc>().add(EmailChanged(email: value)),
+              context.read<SignUpBloc>().add(SignUpEmailChanged(email: value)),
         );
       },
     );
@@ -94,8 +101,9 @@ class PasswordTextField extends StatelessWidget {
           initialValue: state.password.value,
           inputFormatters: [LengthLimitingTextInputFormatter(51)],
           errorMessage: state.password.displayError?.message(context.l10n),
-          onChanged: (value) =>
-              context.read<SignUpBloc>().add(PasswordChanged(password: value)),
+          onChanged: (value) => context
+              .read<SignUpBloc>()
+              .add(SignUpPasswordChanged(password: value)),
         );
       },
     );
@@ -122,7 +130,7 @@ class SignUpButton extends StatelessWidget {
           isLoading: state.status.isInProgress,
           text: 'Sign Up',
           onPressed: state.isValid
-              ? () => context.read<SignUpBloc>().add(FormSubmitted())
+              ? () => context.read<SignUpBloc>().add(SignUpFormSubmitted())
               : null,
         );
       },

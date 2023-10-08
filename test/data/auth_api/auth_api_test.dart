@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_ecommerce_bloc_app/data/auth_api/api.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/helpers.dart';
+import 'package:ecommerce_app/data/auth_api/api.dart';
+import 'package:ecommerce_app/data/helpers/helpers.dart';
 
 import '../../helpers/constants.dart';
 

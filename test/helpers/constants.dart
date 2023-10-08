@@ -1,5 +1,5 @@
-import 'package:my_ecommerce_bloc_app/data/auth_api/entities/entities.dart';
-import 'package:my_ecommerce_bloc_app/domain/auth_repository/dtos/dtos.dart';
+import 'package:ecommerce_app/data/auth_api/entities/entities.dart';
+import 'package:ecommerce_app/domain/auth_repository/dtos/dtos.dart';
 
 const id = 'mock-id';
 const email = 'mock-email';

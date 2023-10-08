@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http_interceptor/http_interceptor.dart';
 
-import 'package:my_ecommerce_bloc_app/data/helpers/exceptions.dart';
+import 'package:ecommerce_app/data/helpers/exceptions.dart';
 
 class ErrorInterceptor extends InterceptorContract {
   @override

@@ -7,8 +7,8 @@ class SignUpEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class NameChanged extends SignUpEvent {
-  const NameChanged({required this.name});
+class SignUpNameChanged extends SignUpEvent {
+  const SignUpNameChanged({required this.name});
 
   final String name;
 
@@ -16,8 +16,8 @@ class NameChanged extends SignUpEvent {
   List<Object> get props => [name];
 }
 
-class EmailChanged extends SignUpEvent {
-  const EmailChanged({required this.email});
+class SignUpEmailChanged extends SignUpEvent {
+  const SignUpEmailChanged({required this.email});
 
   final String email;
 
@@ -25,8 +25,8 @@ class EmailChanged extends SignUpEvent {
   List<Object> get props => [email];
 }
 
-class PasswordChanged extends SignUpEvent {
-  const PasswordChanged({required this.password});
+class SignUpPasswordChanged extends SignUpEvent {
+  const SignUpPasswordChanged({required this.password});
 
   final String password;
 
@@ -34,4 +34,4 @@ class PasswordChanged extends SignUpEvent {
   List<Object> get props => [password];
 }
 
-class FormSubmitted extends SignUpEvent {}
+class SignUpFormSubmitted extends SignUpEvent {}

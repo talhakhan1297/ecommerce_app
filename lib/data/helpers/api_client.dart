@@ -4,12 +4,12 @@ import 'dart:io';
 
 import 'package:http_interceptor/http_interceptor.dart';
 
-import 'package:my_ecommerce_bloc_app/data/helpers/api_config.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/auth_interceptor.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/error_interceptor.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/exceptions.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/log_interceptor.dart';
-import 'package:my_ecommerce_bloc_app/data/helpers/retry_policy.dart';
+import 'package:ecommerce_app/data/helpers/api_config.dart';
+import 'package:ecommerce_app/data/helpers/auth_interceptor.dart';
+import 'package:ecommerce_app/data/helpers/error_interceptor.dart';
+import 'package:ecommerce_app/data/helpers/exceptions.dart';
+import 'package:ecommerce_app/data/helpers/log_interceptor.dart';
+import 'package:ecommerce_app/data/helpers/retry_policy.dart';
 
 /// API Client to interact with any REST API
 class APIClient {

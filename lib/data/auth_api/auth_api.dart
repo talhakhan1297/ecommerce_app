@@ -7,13 +7,19 @@ class AuthApiImpl extends AuthApi {
 
   @override
   Future<UserEntity> signIn(SignInDto dto) async {
-    final data = await _client.post(handle: AuthEndpoints.signIn);
+    final data = await _client.get(
+      handle: AuthEndpoints.signIn,
+      // body: dto.toJson(),
+    );
     return UserEntity.fromJson(data as Map<String, dynamic>);
   }
 
   @override
   Future<UserEntity> signUp(SignUpDto dto) async {
-    final data = await _client.post(handle: AuthEndpoints.signUp);
+    final data = await _client.get(
+      handle: AuthEndpoints.signUp,
+      // body: dto.toJson(),
+    );
     return UserEntity.fromJson(data as Map<String, dynamic>);
   }
 }

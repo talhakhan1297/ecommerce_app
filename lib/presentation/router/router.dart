@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_ecommerce_bloc_app/presentation/app/app.dart';
-import 'package:my_ecommerce_bloc_app/presentation/router/routes.dart';
+import 'package:ecommerce_app/presentation/app/app.dart';
+import 'package:ecommerce_app/presentation/router/routes.dart';
+import 'package:ecommerce_app/presentation/sign_in/sign_in.dart';
+import 'package:ecommerce_app/presentation/sign_up/sign_up.dart';
 
 export 'routes.dart';
 
@@ -14,9 +16,13 @@ class AppRouter {
       routes: AppRoutes.list,
       refreshListenable: AppRouterRefreshStream(appBloc.stream),
       redirect: (context, state) {
-        // final appState = appBloc.state;
+        final appState = appBloc.state;
 
-        // no need to redirect at all
+        final signedIn = appState.isAuthenticated;
+        final signingIn = state.matchedLocation == SignInView.route;
+        final signingUp = state.matchedLocation == SignUpView.route;
+        if (!signedIn && !signingIn && !signingUp) return SignInView.route;
+
         return null;
       },
     );

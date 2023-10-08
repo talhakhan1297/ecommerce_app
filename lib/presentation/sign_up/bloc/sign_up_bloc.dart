@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:my_ecommerce_bloc_app/common/custom_exception.dart';
-import 'package:my_ecommerce_bloc_app/domain/auth_repository/repository.dart';
-import 'package:my_ecommerce_bloc_app/presentation/l10n/l10n.dart';
-import 'package:my_ecommerce_bloc_app/presentation/utils/validators/validators.dart';
+import 'package:ecommerce_app/common/custom_exception.dart';
+import 'package:ecommerce_app/domain/auth_repository/repository.dart';
+import 'package:ecommerce_app/presentation/l10n/l10n.dart';
+import 'package:ecommerce_app/presentation/utils/validators/validators.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
@@ -13,15 +13,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc({required AuthRepository authRepository})
       : _authRepository = authRepository,
         super(const SignUpState()) {
-    on<NameChanged>(_onNameChanged);
-    on<EmailChanged>(_onEmailChanged);
-    on<PasswordChanged>(_onPasswordChanged);
-    on<FormSubmitted>(_onFormSubmitted);
+    on<SignUpNameChanged>(_onNameChanged);
+    on<SignUpEmailChanged>(_onEmailChanged);
+    on<SignUpPasswordChanged>(_onPasswordChanged);
+    on<SignUpFormSubmitted>(_onFormSubmitted);
   }
 
   final AuthRepository _authRepository;
 
-  void _onNameChanged(NameChanged event, Emitter<SignUpState> emit) {
+  void _onNameChanged(SignUpNameChanged event, Emitter<SignUpState> emit) {
     final name = General.dirty(event.name);
 
     emit(
@@ -32,7 +32,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _onEmailChanged(EmailChanged event, Emitter<SignUpState> emit) {
+  void _onEmailChanged(SignUpEmailChanged event, Emitter<SignUpState> emit) {
     final email = Email.dirty(event.email);
 
     emit(
@@ -43,7 +43,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  void _onPasswordChanged(PasswordChanged event, Emitter<SignUpState> emit) {
+  void _onPasswordChanged(
+    SignUpPasswordChanged event,
+    Emitter<SignUpState> emit,
+  ) {
     final password = Password.dirty(event.password);
 
     emit(
@@ -55,7 +58,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   Future<void> _onFormSubmitted(
-    FormSubmitted event,
+    SignUpFormSubmitted event,
     Emitter<SignUpState> emit,
   ) async {
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));

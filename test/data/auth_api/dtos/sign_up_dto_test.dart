@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_ecommerce_bloc_app/domain/auth_repository/dtos/dtos.dart';
+import 'package:ecommerce_app/domain/auth_repository/dtos/dtos.dart';
 
 import '../../../helpers/constants.dart';
 

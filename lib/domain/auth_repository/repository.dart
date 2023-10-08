@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:my_ecommerce_bloc_app/common/cache_client.dart';
-import 'package:my_ecommerce_bloc_app/data/auth_api/api.dart';
-import 'package:my_ecommerce_bloc_app/domain/auth_repository/models/models.dart';
+import 'package:ecommerce_app/common/cache_client.dart';
+import 'package:ecommerce_app/data/auth_api/api.dart';
+import 'package:ecommerce_app/domain/auth_repository/models/models.dart';
 
 export 'dtos/dtos.dart';
 export 'models/models.dart';

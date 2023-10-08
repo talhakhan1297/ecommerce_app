@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
-import 'package:my_ecommerce_bloc_app/common/cache_client.dart';
-import 'package:my_ecommerce_bloc_app/domain/auth_repository/repository.dart';
+import 'package:ecommerce_app/common/cache_client.dart';
+import 'package:ecommerce_app/domain/auth_repository/repository.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
