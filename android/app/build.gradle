@@ -74,17 +74,17 @@ android {
         production {
             dimension "default"
             applicationIdSuffix ""
-            manifestPlaceholders = [appName: "My Ecommerce Bloc App"]
+            manifestPlaceholders = [appName: "Ecommerce App"]
         }
         staging {
             dimension "default"
             applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] My Ecommerce Bloc App"]
+            manifestPlaceholders = [appName: "[STG] Ecommerce App"]
         }
         development {
             dimension "default"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] My Ecommerce Bloc App"]
+            manifestPlaceholders = [appName: "[DEV] Ecommerce App"]
         }
     }
 

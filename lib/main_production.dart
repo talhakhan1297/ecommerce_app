@@ -1,6 +1,8 @@
-import 'package:my_ecommerce_bloc_app/app/app.dart';
-import 'package:my_ecommerce_bloc_app/bootstrap.dart';
+import 'package:ecommerce_app/bootstrap.dart';
+import 'package:ecommerce_app/data/helpers/api_config.dart';
+import 'package:ecommerce_app/presentation/app/app.dart';
 
 void main() {
-  bootstrap(() => const App());
+  APIConfig.baseUrl = 'https://mocki.io/v1';
+  bootstrap(App.new);
 }
