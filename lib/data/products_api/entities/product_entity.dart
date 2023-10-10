@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/data/products/entities/rating_entity.dart';
+import 'package:ecommerce_app/data/products_api/entities/rating_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class ProductEntity extends Equatable {
