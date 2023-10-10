@@ -10,11 +10,14 @@ class ProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Logout'),
-          onPressed: () => context.read<AppBloc>().add(LogoutRequested()),
-        ),
+      appBar: AppBar(
+        title: const Text('Products'),
+        actions: [
+          IconButton(
+            onPressed: () => context.read<AppBloc>().add(LogoutRequested()),
+            icon: const Icon(Icons.logout_rounded),
+          ),
+        ],
       ),
     );
   }
