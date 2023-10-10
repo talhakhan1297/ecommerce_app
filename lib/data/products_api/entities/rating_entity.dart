@@ -5,12 +5,12 @@ class RatingEntity extends Equatable {
 
   factory RatingEntity.fromJson(Map<String, dynamic> json) {
     return RatingEntity(
-      rate: json['rate'] as double?,
+      rate: json['rate'] as num?,
       count: json['count'] as int?,
     );
   }
 
-  final double? rate;
+  final num? rate;
   final int? count;
 
   @override

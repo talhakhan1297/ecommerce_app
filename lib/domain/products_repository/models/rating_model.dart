@@ -8,7 +8,7 @@ class RatingModel extends Equatable {
     return RatingModel(rate: entity.rate, count: entity.count);
   }
 
-  final double? rate;
+  final num? rate;
   final int? count;
 
   @override
