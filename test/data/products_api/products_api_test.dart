@@ -69,6 +69,14 @@ void main() {
           expect(e.toString(), 'SocketException: message');
         }
       });
+
+      test('return empty list when getProducts returns null.', () async {
+        when(() => apiClient.get(handle: any(named: 'handle')))
+            .thenAnswer((_) async => null);
+
+        final data = await productsApi.getProducts();
+        expect(data, <ProductEntity>[]);
+      });
     });
   });
 }
