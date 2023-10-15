@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:ecommerce_app/common/cache_client.dart';
+import 'package:ecommerce_app/common/cache_client/cache_client.dart';
 import 'package:ecommerce_app/data/auth_api/api.dart';
 import 'package:ecommerce_app/domain/auth_repository/models/models.dart';
 import 'package:flutter/foundation.dart';
@@ -19,7 +19,7 @@ abstract class AuthRepository {
   AuthRepository({
     CacheClient? cache,
     StreamController<UserModel>? userAuth,
-  })  : _cache = cache ?? CacheClient(),
+  })  : _cache = cache ?? HiveCacheClient(),
         _userAuth = userAuth ?? StreamController<UserModel>.broadcast();
 
   final CacheClient _cache;
@@ -67,7 +67,7 @@ abstract class AuthRepository {
 
   /// disposes the _userAuth stream
   Future<void> dispose() async {
-    await _userAuth.close();
     await _cache.close();
+    await _userAuth.close();
   }
 }
