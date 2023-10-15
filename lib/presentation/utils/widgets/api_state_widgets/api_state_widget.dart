@@ -50,7 +50,7 @@ class APIStateWidget<T> extends StatelessWidget {
   Widget _buildFailureWidget([String? errorMessage]) {
     return failureWidget ??
         AppError(
-          message: apiState.error ?? 'Something went wrong!',
+          message: apiState.error ?? errorMessage ?? 'Something went wrong!',
           retry: onRetry,
         );
   }
@@ -59,6 +59,6 @@ class APIStateWidget<T> extends StatelessWidget {
 
   Widget _buildInitialWidget() {
     onInitialState?.call();
-    return initialWidget ?? const SizedBox();
+    return initialWidget ?? const SizedBox(key: Key('Initial_SizedBox'));
   }
 }
