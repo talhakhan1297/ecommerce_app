@@ -53,6 +53,19 @@ $ genhtml coverage/lcov.info -o coverage/
 $ open coverage/index.html
 ```
 
+To run all integration tests use the following command for respective flavor:
+
+```sh
+# Development
+$ flutter test integration_test/app_test.dart --flavor development
+
+# Staging
+$ flutter test integration_test/app_test.dart --flavor staging
+
+# Production
+$ flutter test integration_test/app_test.dart --flavor production
+```
+
 ---
 
 ## Working with Translations 🌐
