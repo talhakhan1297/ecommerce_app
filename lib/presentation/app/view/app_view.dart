@@ -36,6 +36,7 @@ class AppView extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: appRouter.router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
