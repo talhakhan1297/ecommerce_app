@@ -26,15 +26,3 @@ class TimeOutExceptionC extends CustomException {
         'Something went wrong, please check your internet and try again later.',
   ]) : super(message, '');
 }
-
-class MissingDataException extends CustomException {
-  const MissingDataException([
-    String message = 'Something went wrong, please try again later.',
-  ]) : super(message, '');
-}
-
-class APIException extends CustomException {
-  const APIException([
-    String? message = '',
-  ]) : super(message, '');
-}

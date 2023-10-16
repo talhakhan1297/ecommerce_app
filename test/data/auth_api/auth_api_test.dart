@@ -11,9 +11,11 @@ void main() {
   final mockApiClient = MockAPIClient();
   final authApi = AuthApiImpl(client: mockApiClient);
   group('AuthApi', () {
-    when(() => mockApiClient.post(handle: any(named: 'handle'))).thenAnswer(
-      (invocation) async => userJsonResposne,
-    );
+    setUp(() {
+      when(() => mockApiClient.get(handle: any(named: 'handle'))).thenAnswer(
+        (invocation) async => userJsonResposne,
+      );
+    });
 
     test('calls signUp()', () async {
       final response = await authApi.signUp(signUpDto);
