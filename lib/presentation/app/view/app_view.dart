@@ -2,6 +2,7 @@ import 'package:ecommerce_app/domain/auth_repository/repository.dart';
 import 'package:ecommerce_app/presentation/app/app.dart';
 import 'package:ecommerce_app/presentation/l10n/l10n.dart';
 import 'package:ecommerce_app/presentation/router/router.dart';
+import 'package:ecommerce_app/presentation/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -28,11 +29,11 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode = context.select((AppBloc bloc) => bloc.state.themeMode);
     return MaterialApp.router(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green[900]!),
-      ),
+      themeMode: themeMode,
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: appRouter.router,

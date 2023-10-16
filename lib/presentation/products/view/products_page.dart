@@ -28,6 +28,7 @@ class ProductsPage extends StatelessWidget {
             onRetry: () =>
                 context.read<ProductsBloc>().add(FetchProductsEvent()),
             successWidget: ListView.separated(
+              padding: const EdgeInsets.all(24),
               itemCount: state.products.length,
               itemBuilder: (context, index) =>
                   ProductCard(data: state.products[index]),
@@ -47,23 +48,60 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final titleMedium = textTheme.titleMedium;
+    final bodySmall = textTheme.bodySmall;
+    final labelMedium = textTheme.labelMedium;
+    final labelLarge = textTheme.labelLarge;
     return Card(
-      child: Column(
-        children: [
-          Image.network(
-            data.image ?? '',
-            width: double.infinity,
-            height: 200,
-            fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => const Icon(Icons.image),
-          ),
-          Text(data.title ?? 'Untitled'),
-          Text(data.description ?? ''),
-          Text(data.price?.toString() ?? 'Unknown'),
-          Text(data.category ?? ''),
-          Text(data.rating?.rate?.toString() ?? ''),
-          Text(data.rating?.count?.toString() ?? ''),
-        ],
+      elevation: 4,
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                data.image ?? '',
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => const Icon(Icons.image),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              data.titleText,
+              textAlign: TextAlign.center,
+              style: titleMedium,
+            ),
+            const SizedBox(height: 8),
+            if (data.description != null) ...[
+              Text(
+                data.description!,
+                textAlign: TextAlign.center,
+                style: bodySmall,
+              ),
+              const SizedBox(height: 8),
+            ],
+            if (data.category != null) ...[
+              Chip(
+                label: Text(data.category!, style: labelMedium),
+                visualDensity: VisualDensity.compact,
+              ),
+              const SizedBox(height: 8),
+            ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(data.priceText, style: labelLarge),
+                if (data.ratingText != null)
+                  Text(data.ratingText!, style: labelLarge),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -34,6 +34,16 @@ class ProductModel extends Equatable {
   final String? image;
   final RatingModel? rating;
 
+  String get titleText => title ?? 'Untitled';
+
+  String get priceText => price != null ? '\$$price' : 'Unknown';
+
+  String? get ratingText =>
+      rating?.rate == null ? null : '⭐ ${rating?.rate} $_ratingCountText';
+
+  String get _ratingCountText =>
+      rating?.count != null ? '(${rating?.count})' : '';
+
   @override
   List<Object?> get props => [
         id,
