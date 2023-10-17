@@ -10,6 +10,8 @@ class RatingEntity extends Equatable {
     );
   }
 
+  Map<String, dynamic> get toJson => {'rate': rate, 'count': count};
+
   final num? rate;
   final int? count;
 

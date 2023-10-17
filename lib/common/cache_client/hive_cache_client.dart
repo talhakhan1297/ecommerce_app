@@ -32,6 +32,11 @@ class HiveCacheClient implements CacheClient {
   }
 
   @override
+  Future<void> delete<T extends Object>({required String key}) async {
+    await _cache.delete(key);
+  }
+
+  @override
   Future<void> clear() async {
     await _cache.clear();
   }

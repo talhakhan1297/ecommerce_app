@@ -26,6 +26,16 @@ class ProductModel extends Equatable {
     );
   }
 
+  ProductEntity get toEntity => ProductEntity(
+        id: id,
+        title: title,
+        price: price,
+        description: description,
+        category: category,
+        image: image,
+        rating: rating?.toEntity,
+      );
+
   final int? id;
   final String? title;
   final num? price;

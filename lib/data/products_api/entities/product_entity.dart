@@ -26,6 +26,16 @@ class ProductEntity extends Equatable {
     );
   }
 
+  Map<String, dynamic> get toJson => {
+        'id': id,
+        'title': title,
+        'price': price,
+        'description': description,
+        'category': category,
+        'image': image,
+        'rating': rating?.toJson,
+      };
+
   final int? id;
   final String? title;
   final num? price;

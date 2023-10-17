@@ -14,6 +14,10 @@ abstract class CacheClient {
   /// Defaults to `null` if no value exists for the provided key.
   T? read<T extends Object>({required String key});
 
+  /// Deletes the value for the provided [key].
+  /// Does nothing if no value exists for the provided key.
+  Future<void> delete<T extends Object>({required String key});
+
   /// Clears all the cached data.
   Future<void> clear();
 
