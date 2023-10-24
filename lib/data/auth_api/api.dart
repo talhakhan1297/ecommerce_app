@@ -12,4 +12,6 @@ abstract class AuthApi {
   Future<UserEntity> signIn(SignInDto dto);
 
   Future<UserEntity> signUp(SignUpDto dto);
+
+  Future<void> updateProfile();
 }

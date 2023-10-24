@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/domain/auth_repository/repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -20,6 +21,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ) {
     on<_AppUserChanged>(_onAppUserChanged);
     on<LogoutRequested>(_onLogoutRequested);
+    on<ToggleThemeModeRequested>(_onToggleThemeModeRequested);
 
     _userSubscription = authRepository.user.listen(
       (user) => add(_AppUserChanged(user)),
@@ -49,5 +51,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   void _onLogoutRequested(LogoutRequested event, Emitter<AppState> emit) {
     _authRepository.signOut();
+  }
+
+  void _onToggleThemeModeRequested(
+    ToggleThemeModeRequested event,
+    Emitter<AppState> emit,
+  ) {
+    emit(state.copyWith(themeMode: event.themeMode));
   }
 }

@@ -65,6 +65,8 @@ abstract class AuthRepository {
 
   Future<void> signOut();
 
+  Future<void> updateProfile();
+
   /// disposes the _userAuth stream
   Future<void> dispose() async {
     await _cache.close();

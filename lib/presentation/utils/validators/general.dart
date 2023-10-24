@@ -15,3 +15,8 @@ class General extends FormzInput<String, GeneralValidationError> {
 
   bool get isNotEmpty => error == null;
 }
+
+extension GeneralFromString on String {
+  General toGeneral() => General.dirty(this);
+  General toPureGeneral() => General.pure(this);
+}
