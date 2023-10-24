@@ -22,7 +22,16 @@ void main() {
           RatingEntity.fromJson(const {'rate': 4.5, 'count': 10}),
           isA<RatingEntity>()
               .having((p) => p.rate, 'rate', 4.5)
-              .having((p) => p.count, 'count', 10),
+              .having((p) => p.count, 'count', 10.0),
+        );
+      });
+    });
+
+    group('toJson', () {
+      test('returns correct Map object', () {
+        expect(
+          RatingEntity(rate: 4.5, count: 10).toJson,
+          {'rate': 4.5, 'count': 10},
         );
       });
     });

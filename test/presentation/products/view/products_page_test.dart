@@ -108,7 +108,9 @@ void main() {
         'renders SizedBox '
         'when products status is initial', (tester) async {
       when(() => productsBloc.state).thenReturn(const ProductsState());
+
       await tester.pumpProductsPage(productsBloc);
+
       expect(find.byKey(Key('Initial_SizedBox')), findsOneWidget);
     });
 
@@ -127,7 +129,7 @@ void main() {
 
     testWidgets(
         'renders Empty Products Message '
-        'when products status is success but with 0 photos', (tester) async {
+        'when products status is success but with 0 products', (tester) async {
       when(() => productsBloc.state).thenReturn(
         ProductsState(
           productApiState:
@@ -140,7 +142,7 @@ void main() {
 
     testWidgets(
         'calls add(FetchProductsEvent()) on press of retry button '
-        'when products status is success but with 0 photos', (tester) async {
+        'when products status is success but with 0 products', (tester) async {
       when(() => productsBloc.state).thenReturn(
         ProductsState(
           productApiState:

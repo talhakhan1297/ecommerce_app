@@ -33,3 +33,8 @@ class Email extends FormzInput<String, EmailValidationError> {
     }
   }
 }
+
+extension EmailFromString on String {
+  Email toEmail() => Email.dirty(this);
+  Email toPureEmail() => Email.pure(this);
+}

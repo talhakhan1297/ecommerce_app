@@ -27,4 +27,9 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<void> signOut() async {
     updateUser(UserModel.empty);
   }
+
+  @override
+  Future<void> updateProfile() async {
+    await api.updateProfile();
+  }
 }

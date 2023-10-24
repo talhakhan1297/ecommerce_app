@@ -33,7 +33,7 @@ void main() {
       );
     });
 
-    group('fromJson', () {
+    group('fromEntity', () {
       test('returns correct ProductModel object', () {
         expect(
           ProductModel.fromEntity(
