@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/domain/products_repository/models/models.dart';
 import 'package:ecommerce_app/presentation/app/app.dart';
+import 'package:ecommerce_app/presentation/cart/cart.dart';
 import 'package:ecommerce_app/presentation/products/bloc/products_bloc.dart';
 import 'package:ecommerce_app/presentation/utils/widgets/api_state_widgets/api_state_widget.dart';
+import 'package:ecommerce_app/presentation/utils/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +30,7 @@ class ProductsPage extends StatelessWidget {
             onRetry: () =>
                 context.read<ProductsBloc>().add(FetchProductsEvent()),
             successWidget: ListView.separated(
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(16),
               itemCount: state.products.length,
               itemBuilder: (context, index) =>
                   ProductCard(data: state.products[index]),
@@ -75,6 +77,7 @@ class ProductCard extends StatelessWidget {
               data.titleText,
               textAlign: TextAlign.center,
               style: titleMedium,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
             if (data.description != null) ...[
@@ -82,6 +85,8 @@ class ProductCard extends StatelessWidget {
                 data.description!,
                 textAlign: TextAlign.center,
                 style: bodySmall,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
               ),
               const SizedBox(height: 8),
             ],
@@ -99,6 +104,12 @@ class ProductCard extends StatelessWidget {
                 if (data.ratingText != null)
                   Text(data.ratingText!, style: labelLarge),
               ],
+            ),
+            const SizedBox(height: 16),
+            PrimaryButton(
+              text: 'Add to cart',
+              onPressed: () =>
+                  context.read<CartBloc>().add(AddItemEvent(data.toCartItem)),
             ),
           ],
         ),

@@ -35,6 +35,13 @@ class CartState extends Equatable {
     );
   }
 
+  List<CartItemModel> get cartItems => getCartState.data?.values.toList() ?? [];
+
+  num get totalAmount =>
+      cartItems.fold(0, (previous, current) => previous + current.totalPrice);
+
+  String get totalAmountText => '\$${totalAmount.toStringAsFixed(2)}';
+
   @override
   List<Object> get props => [
         getCartState,

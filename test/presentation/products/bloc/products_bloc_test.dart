@@ -34,8 +34,8 @@ void main() {
 
   group('ProductsBloc', () {
     test('initial state is correct', () {
-      final cubit = ProductsBloc(productsRepository: productsRepository);
-      expect(cubit.state, ProductsState());
+      final bloc = ProductsBloc(productsRepository: productsRepository);
+      expect(bloc.state, ProductsState());
     });
 
     group('FetchProductsEvent', () {
@@ -66,7 +66,8 @@ void main() {
       );
 
       blocTest<ProductsBloc, ProductsState>(
-        'emits [APICallState.loading, APICallState.failure]',
+        'emits [APICallState.loading, APICallState.failure] '
+        'with CustomException',
         setUp: () {
           when(() => productsRepository.getProducts())
               .thenThrow(FetchDataException());
@@ -84,6 +85,27 @@ void main() {
               state: APICallState.failure,
               error: 'Please check your internet and try again later.',
             ),
+          ),
+        ],
+      );
+      blocTest<ProductsBloc, ProductsState>(
+        'emits [APICallState.loading, APICallState.failure] '
+        'with Exception',
+        setUp: () {
+          when(() => productsRepository.getProducts())
+              .thenThrow(Exception('oops'));
+        },
+        build: () => ProductsBloc(productsRepository: productsRepository),
+        act: (bloc) => bloc.add(FetchProductsEvent()),
+        expect: () => const <ProductsState>[
+          ProductsState(
+            productApiState: APIState<List<ProductModel>>(
+              state: APICallState.loading,
+            ),
+          ),
+          ProductsState(
+            productApiState:
+                APIState<List<ProductModel>>(state: APICallState.failure),
           ),
         ],
       );

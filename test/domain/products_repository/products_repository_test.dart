@@ -6,8 +6,6 @@ import 'package:test/test.dart';
 
 class MockProductsApi extends Mock implements ProductsApi {}
 
-class MockProductEntity extends Mock implements ProductEntity {}
-
 void main() {
   const mockResponse = [
     ProductEntity(

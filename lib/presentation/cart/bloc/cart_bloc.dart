@@ -12,7 +12,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     required CartRepository cartRepository,
   })  : _repository = cartRepository,
         super(const CartState()) {
-    on<FetchCartEvent>(_onFetchCartEvent);
+    on<FetchCartEvent>((_, emit) => _onFetchCartEvent(emit));
     on<AddItemEvent>(_onAddItemEvent);
     on<RemoveItemEvent>(_onRemoveItemEvent);
     on<IncrementItemEvent>(_onIncrementItemEvent);
@@ -22,10 +22,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   final CartRepository _repository;
 
-  Future<void> _onFetchCartEvent(
-    FetchCartEvent event,
-    Emitter<CartState> emit,
-  ) async {
+  Future<void> _onFetchCartEvent(Emitter<CartState> emit) async {
     emit(state.copyWith(getCartState: state.getCartState.toLoading()));
 
     try {
@@ -53,6 +50,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     try {
       await _repository.addCartItem(event.item);
+      await _onFetchCartEvent(emit);
 
       emit(state.copyWith(addItemState: state.addItemState.toLoaded()));
     } on CustomException catch (e) {
@@ -74,6 +72,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     try {
       await _repository.removeCartItem(event.id);
+      await _onFetchCartEvent(emit);
 
       emit(state.copyWith(removeItemState: state.removeItemState.toLoaded()));
     } on CustomException catch (e) {
@@ -97,6 +96,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     try {
       await _repository.incrementCartItem(event.id);
+      await _onFetchCartEvent(emit);
 
       emit(
         state.copyWith(incrementItemState: state.incrementItemState.toLoaded()),
@@ -127,6 +127,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     try {
       await _repository.decrementCartItem(event.id);
+      await _onFetchCartEvent(emit);
 
       emit(
         state.copyWith(decrementItemState: state.decrementItemState.toLoaded()),
@@ -155,6 +156,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
     try {
       await _repository.clearCart();
+      await _onFetchCartEvent(emit);
 
       emit(state.copyWith(clearCartState: state.clearCartState.toLoaded()));
     } on CustomException catch (e) {

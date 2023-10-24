@@ -44,7 +44,9 @@ class APIState<T> extends Equatable {
   bool get isFailure => state.isFailure;
 
   bool get isEmpty {
-    return data == null || (data is List && ((data as List?)!.isEmpty));
+    return data == null ||
+        (data is List && ((data as List?)!.isEmpty)) ||
+        (data is Map && ((data as Map?)!.isEmpty));
   }
 
   bool get isNotEmpty => !isEmpty;

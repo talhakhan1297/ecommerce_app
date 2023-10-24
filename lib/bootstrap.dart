@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/common/cache_client/cache_client.dart';
 import 'package:ecommerce_app/domain/auth_repository/repository.dart';
+import 'package:ecommerce_app/domain/cart_repository/repository.dart';
 import 'package:ecommerce_app/domain/products_repository/repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
@@ -37,7 +38,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   GetIt.I
     ..registerSingleton<AuthRepository>(AuthRepositoryImpl())
-    ..registerSingleton<ProductsRepository>(ProductsRepositoryImpl());
+    ..registerSingleton<ProductsRepository>(ProductsRepositoryImpl())
+    ..registerSingleton<CartRepository>(CartRepositoryImpl());
 
   runApp(await builder());
 }

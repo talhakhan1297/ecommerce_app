@@ -18,6 +18,14 @@ class CartItemModel extends Equatable {
   CartItemEntity get toEntity =>
       CartItemEntity(product: product.toEntity, quantity: quantity);
 
+  num get totalPrice => product.price! * quantity;
+
+  String get itemTotalPriceText {
+    if (product.price == null) return 'Unknown';
+    final priceText = (product.price! * quantity).toStringAsFixed(2);
+    return '\$$priceText';
+  }
+
   final ProductModel product;
   final int quantity;
 
