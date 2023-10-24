@@ -8,6 +8,8 @@ class RatingModel extends Equatable {
     return RatingModel(rate: entity.rate, count: entity.count);
   }
 
+  RatingEntity get toEntity => RatingEntity(rate: rate, count: count);
+
   final num? rate;
   final int? count;
 

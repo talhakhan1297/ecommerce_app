@@ -124,4 +124,5 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+/applicationDocumentsPath
 todo.txt

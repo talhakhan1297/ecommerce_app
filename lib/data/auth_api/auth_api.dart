@@ -22,4 +22,9 @@ class AuthApiImpl extends AuthApi {
     );
     return UserEntity.fromJson(data as Map<String, dynamic>);
   }
+
+  @override
+  Future<void> updateProfile() async {
+    await Future<void>.delayed(const Duration(seconds: 2));
+  }
 }

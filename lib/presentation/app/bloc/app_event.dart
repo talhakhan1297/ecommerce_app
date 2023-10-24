@@ -14,3 +14,12 @@ class _AppUserChanged extends AppEvent {
 }
 
 class LogoutRequested extends AppEvent {}
+
+class ToggleThemeModeRequested extends AppEvent {
+  const ToggleThemeModeRequested({required this.themeMode});
+
+  final ThemeMode themeMode;
+
+  @override
+  List<Object> get props => [themeMode];
+}
